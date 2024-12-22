@@ -1,8 +1,6 @@
-
+using FAClient;
 using FAClient.Dto;
 using Newtonsoft.Json;
-using System.Net.Http;
-using System.Net.Http.Json;
 using System.Text;
 
 namespace TestProject1;
@@ -10,13 +8,15 @@ namespace TestProject1;
 [TestClass]
 public class UnitTest1
 {
-    string baseUrl = "http://127.0.0.1:8000";
-    string endpoint = "detect";
+    const string baseUrl = "http://127.0.0.1:8000";
+    const string redWolfPath = "..\\..\\..\\data\\redwolf.jpg";
+
+
     [TestMethod]
     public void TestConcept()
     {
-        var path = "..\\..\\..\\data\\redwolf.jpg";
-        var bData = File.ReadAllBytes(path);
+        string endpoint = "detect";
+        var bData = File.ReadAllBytes(redWolfPath);
         var sData = Convert.ToBase64String(bData);
         var fd = new FileData { b64Value = sData, name = "redwolf.jpg" };
         var json = JsonConvert.SerializeObject(fd);
@@ -33,6 +33,14 @@ public class UnitTest1
         {
             throw new Exception();
         }
+    }
 
+
+    [TestMethod]
+    public void Test1()
+    {
+        var bData = File.ReadAllBytes(redWolfPath);
+        var client = FA.GetClient(baseUrl);
+        var result = client.Detect(bData, "redwolf.jpg");
     }
 }
