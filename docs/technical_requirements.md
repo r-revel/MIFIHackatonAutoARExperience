@@ -25,26 +25,7 @@
 - **Трекинг точек** использует OpenCV для фиксации на объекте для отображения 3D-графики.
 - **Отображение 3D** использует 3D-движок для рендеринга 3D-графики.
 
-
-```plantuml
-@startuml
-
-package "Backend" {
-  [Система детектирования автомобиля]
-  [Вопросно-ответные системы]
-  FTP - [FastAPI (Внешний интерфейс)]
-}
-
-node "Mobile" {
-  [Работа с запросами] --> FTP
-  [Трекинг точек]
-  [Отображение 3D]
-  [Работа с камерой]
-}
-
-@enduml
-    
-```
+![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://github.com/r-revel/MIFIHackatonAutoARExperience/tree/main/docs/base-confix.txt)
 
 ## Backend
 
