@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/AutoARExperience/.vs/AutoARExperience
+/AutoARExperience/FAClient/bin/Debug/net8.0
+/AutoARExperience/FAClient/obj
+/AutoARExperience/TestProject1/bin/Debug/net8.0
+/AutoARExperience/TestProject1/obj
