@@ -10,6 +10,8 @@ import cv2
 app = FastAPI()
 model = YOLO("yolov8s.pt")  
 
+
+# service url http://127.0.0.1:8000/
 @app.get("/")
 async def root():
     return HTMLResponse(content=f"""
