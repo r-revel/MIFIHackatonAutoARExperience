@@ -25,7 +25,7 @@
 - **Трекинг точек** использует OpenCV для фиксации на объекте для отображения 3D-графики.
 - **Отображение 3D** использует 3D-движок для рендеринга 3D-графики.
 
-![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://github.com/r-revel/MIFIHackatonAutoARExperience/tree/main/docs/base-confix.txt)
+![alternative text](https://www.plantuml.com/plantuml/svg/RO-nIiDW58Nt_oakdNJ8v2ugKd0GEhYL3D4M4MihDauYD4LGw53m0KHzWZ_LQ5AR-0hdlf7d_b8dbv-JatFlTy_EE4skqkkBWNENoSbvSjgNrXv5VzXhoOqJwU85fMOwHO4LlE0THVXOyYrrWWOBUDJKSw5Oq6wOR92Zn9VEux3aaSQtfJLZjeaefXoqLRNEK0ZzFupERAXzr958kkradEvs3cI3EseEF1WBbV2fBQuJlUDGfTbcx6wT6uvwx70uEZuRzDSLdk6H1wGdIF09lxw6QeKobYZQDcA8l_8N2ne1RsA5zDwCtofFPY1dnkE3jfrJoDP-_2zg6G25mL3PWJy0)
 
 ## Backend
 
