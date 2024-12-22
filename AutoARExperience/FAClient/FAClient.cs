@@ -1,7 +1,6 @@
-﻿namespace FAClient
-{
-    public class FAClient
-    {
+﻿namespace FAClient;
 
-    }
+public class FAClient
+{
+
 }
