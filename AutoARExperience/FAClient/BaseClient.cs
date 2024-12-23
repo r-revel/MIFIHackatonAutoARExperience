@@ -18,9 +18,8 @@ internal class BaseClient
         using HttpClient client = new();
         var response = client.PostAsync($"{baseUrl}/{endPoint}/", content).GetAwaiter().GetResult();
         var responseContent = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-        if (response.IsSuccessStatusCode && !string.IsNullOrWhiteSpace(responseContent))
-            return (T)JsonConvert.DeserializeObject(responseContent!, typeof(T))!;
-        else
+        return response.IsSuccessStatusCode && !string.IsNullOrWhiteSpace(responseContent) ?
+            (T)JsonConvert.DeserializeObject(responseContent!, typeof(T))! :
             throw new Exception(@$"Ошибка выполнения запроса: {response.StatusCode}");
     }
 }
