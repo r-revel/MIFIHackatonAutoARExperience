@@ -4,7 +4,6 @@ from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 import numpy as np
 import cv2
-import io
 
 app = FastAPI()
 model = YOLO("yolov8s.pt")  
