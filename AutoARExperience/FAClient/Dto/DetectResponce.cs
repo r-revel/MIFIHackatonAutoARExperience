@@ -2,6 +2,9 @@
 
 public class DetectResponce
 {
-    public bool Result { get; set; }
-    public string Description { get; set; } = "";
+    public float Probability { get; set; } = 0;
+
+    public string ClassName { get; set; } = "";
+
+    public override string ToString() => JsonConvert.SerializeObject(this);
 }

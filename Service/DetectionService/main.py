@@ -4,6 +4,7 @@ from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 import numpy as np
 import cv2
+from base64 import b64decode
 
 app = FastAPI()
 model = YOLO("yolov8_Cars.pt")
@@ -18,18 +19,27 @@ async def root():
 """)
 
 class DetectResponce(BaseModel):
-    Result: bool
-    Description: str
+    Probability: float
+    ClassName: str
     
 class DetectRequest(BaseModel):
-    Data: bytes 
-    Name: str
+    Data: str
 
 @app.post("/detect/", response_model=DetectResponce) 
 async def detect(request: DetectRequest)-> DetectResponce:
-    description = ''
-    result = False
-    img_array = np.frombuffer(request.Data, np.uint8)
+    img_bytes  = b64decode(request.Data, altchars=None, validate=False)
+    img_array = np.frombuffer(img_bytes, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)  
-    results = model.predict(img) 
-    return DetectResponce(Result=result, Description=description)
+    result = model(img)[0]
+    max_conf = 0
+    max_class = None
+    for box in result.boxes:
+        conf = box.conf[0]
+        cls = int(box.cls[0])
+        if conf > max_conf:
+            max_conf = conf
+            max_class = cls
+    class_name = model.names[max_class]
+    probability = max_conf.item()
+    result = result.names
+    return DetectResponce(Probability=probability, ClassName=class_name)

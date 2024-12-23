@@ -13,10 +13,10 @@ class TestService(unittest.TestCase):
             b64_image  = base64.b64encode(image_file.read()).decode("utf-8")
         data = {
             "Data": b64_image,
-            "Name": file_name
         }
         response = requests.post(url, json=data)
-        print("Done")
+        data = response.content.decode("utf-8")
+        print(data)
 
 if __name__ == '__main__':
     unittest.main()

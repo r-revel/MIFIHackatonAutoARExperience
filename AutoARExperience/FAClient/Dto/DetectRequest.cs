@@ -2,6 +2,5 @@
 
 public class DetectRequest
 {
-    public byte[] Data { get; set; } = [];
-    public string Name { get; set; } = "";
+    public string Data { get; set; } = "";
 }
