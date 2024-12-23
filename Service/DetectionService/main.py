@@ -6,7 +6,7 @@ import numpy as np
 import cv2
 
 app = FastAPI()
-model = YOLO("yolov8s.pt")  
+model = YOLO("yolov8_Cars.pt")
 
 
 # service url http://127.0.0.1:8000/

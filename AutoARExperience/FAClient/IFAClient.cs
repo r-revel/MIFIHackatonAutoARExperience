@@ -1,6 +1,4 @@
-﻿using FAClient.Dto;
-
-namespace FAClient;
+﻿namespace FAClient;
 
 public interface IFAClient
 {
