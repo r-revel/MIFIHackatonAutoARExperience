@@ -1,9 +1,7 @@
-using FAClient;
-
-namespace TestProject1;
+namespace TestProject;
 
 [TestClass]
-public class UnitTest1
+public class UnitTests
 {
     const string baseUrl = "http://127.0.0.1:8000";
     const string redWolfPath = "..\\..\\..\\data\\redwolf.jpg";
