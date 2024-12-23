@@ -12,3 +12,8 @@
 /AutoARExperience/FAClient/obj
 /AutoARExperience/TestProject1/bin/Debug/net8.0
 /AutoARExperience/TestProject1/obj
+/AutoARExperience/TestResults
+/AutoARExperience/.vs
+/AutoARExperience/TestProject/bin/Debug/net8.0
+/AutoARExperience/TestProject/obj
+__pycache__
