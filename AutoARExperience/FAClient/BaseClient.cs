@@ -11,7 +11,7 @@ internal class BaseClient
 
     public string BaseUrl => baseUrl;
 
-    internal T? Post<T>(string endPoint, object data)
+    internal T Post<T>(string endPoint, object data) where T : new()
     {
         var json = JsonConvert.SerializeObject(data);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -19,7 +19,7 @@ internal class BaseClient
         var response = client.PostAsync($"{baseUrl}/{endPoint}/", content).GetAwaiter().GetResult();
         var responseContent = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         if (response.IsSuccessStatusCode && !string.IsNullOrWhiteSpace(responseContent))
-            return (T?)JsonConvert.DeserializeObject(responseContent!, typeof(T));
+            return (T)JsonConvert.DeserializeObject(responseContent!, typeof(T))!;
         else
             throw new Exception(@$"Ошибка выполнения запроса: {response.StatusCode}");
     }
