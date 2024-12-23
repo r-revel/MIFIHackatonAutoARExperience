@@ -6,5 +6,5 @@ public interface IFAClient
 {
     public string BaseUrl { get; }
 
-    DetectionResponce Detect(byte[] data, string name);
+    DetectResponce Detect(byte[] data, string name);
 }

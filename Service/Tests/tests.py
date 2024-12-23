@@ -12,8 +12,8 @@ class TestService(unittest.TestCase):
         with open(file_name, "rb") as image_file:
             b64_image  = base64.b64encode(image_file.read()).decode("utf-8")
         data = {
-            "b64Value": b64_image,
-            "name": file_name
+            "Data": b64_image,
+            "Name": file_name
         }
         response = requests.post(url, json=data)
         print("Done")

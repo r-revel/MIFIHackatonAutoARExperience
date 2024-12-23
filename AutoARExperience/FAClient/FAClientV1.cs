@@ -1,18 +1,9 @@
-﻿using FAClient.Dto;
-using System.IO;
-
-namespace FAClient;
+﻿namespace FAClient;
 
 internal class FAClientV1 : BaseClient, IFAClient
 {
-    public FAClientV1(string baseUrl) : base(baseUrl)
-    {
-    }
+    public FAClientV1(string baseUrl) : base(baseUrl) { }
 
-    public DetectionResponce Detect(byte[] data, string name)
-    {
-        var sData = Convert.ToBase64String(data);
-        var continer = new FileData() { b64Value = sData, name = name};
-        return Post<DetectionResponce>("detect", continer);
-    }
+    public DetectResponce Detect(byte[] data, string name) =>
+        Post<DetectResponce>("detect", new DetectRequest() { Data = data, Name = name });
 }

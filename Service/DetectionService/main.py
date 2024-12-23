@@ -1,11 +1,10 @@
 from ultralytics import YOLO
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
-from base64 import b64decode
-from base64 import b64encode 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 import numpy as np
 import cv2
+import io
 
 app = FastAPI()
 model = YOLO("yolov8s.pt")  
@@ -19,20 +18,19 @@ async def root():
 <a href="/docs" target="_blank">Swagger UI</a>
 """)
 
-class DetectionResponce(BaseModel):
-    result: bool
-    description: str
+class DetectResponce(BaseModel):
+    Result: bool
+    Description: str
     
-class Image(BaseModel):
-    b64Value: str
-    name: str
+class DetectRequest(BaseModel):
+    Data: bytes 
+    Name: str
 
-@app.post("/detect/", response_model=DetectionResponce) 
-async def detect(data: Image)-> DetectionResponce:
+@app.post("/detect/", response_model=DetectResponce) 
+async def detect(request: DetectRequest)-> DetectResponce:
     description = ''
     result = False
-    img_bytes  = b64decode(data.b64Value, altchars=None, validate=False)
-    img_array = np.frombuffer(img_bytes, np.uint8)
+    img_array = np.frombuffer(request.Data, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)  
     results = model.predict(img) 
-    return DetectionResponce(result=result, description=description)
+    return DetectResponce(Result=result, Description=description)
