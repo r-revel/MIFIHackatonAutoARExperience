@@ -16,7 +16,8 @@ syncObj = threading.Lock()
 async def root():
     return HTMLResponse(content=f"""
 <h2>Detection service ready!</h2>
-<a href="/docs" target="_blank">Swagger UI</a>
+<a href="/docs" target="_blank">Swagger UI</a><br><br>
+Model is running on: {next(model.model.parameters()).device}<br><br>
 """)
 
 class DetectResponce(BaseModel):
