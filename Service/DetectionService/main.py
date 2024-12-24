@@ -5,10 +5,11 @@ from pydantic import BaseModel
 import numpy as np
 import cv2
 from base64 import b64decode
+import threading
 
 app = FastAPI()
 model = YOLO("yolov8_Cars.pt")
-
+syncObj = threading.Lock()
 
 # service url http://127.0.0.1:8000/
 @app.get("/")
@@ -30,7 +31,8 @@ async def detect(request: DetectRequest)-> DetectResponce:
     img_bytes  = b64decode(request.Data, altchars=None, validate=False)
     img_array = np.frombuffer(img_bytes, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)  
-    result = model(img)[0]
+    with syncObj:
+        result = model(img)[0]
     max_conf = 0
     max_class = None
     for box in result.boxes:

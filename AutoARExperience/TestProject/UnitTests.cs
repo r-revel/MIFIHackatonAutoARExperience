@@ -4,7 +4,7 @@ namespace TestProject;
 public class UnitTests
 {
     private const string baseUrl = "http://127.0.0.1:8000";
-    private const string redWolfPath = "..\\..\\..\\data\\redwolf.png";
+    private const string redWolfPath = "..\\..\\..\\data\\redwolf.jpg";
     private const string vaz   = "..\\..\\..\\..\\..\\Service\\DS\\data\\test\\images\\0_10.png";
     private const string uaz   = "..\\..\\..\\..\\..\\Service\\DS\\data\\test\\images\\1_10.png";
     private const string vesta = "..\\..\\..\\..\\..\\Service\\DS\\data\\test\\images\\2_10.png";
@@ -13,8 +13,13 @@ public class UnitTests
     [TestMethod]
     public void TestNonCar()
     {
+        Stopwatch sw = Stopwatch.StartNew();
         var responce = client.Detect(File.ReadAllBytes(redWolfPath));
-        Trace.WriteLine(@$"{nameof(TestNonCar)}: {responce}");
+        sw.Stop();
+        Trace.WriteLine(@$"
+{nameof(TestNonCar)}: {responce}
+Duration: {sw.ElapsedMilliseconds} msec
+");
         if (responce.Probability >= 0.9)
             throw new Exception("Ошибка предсказания!");
     }
@@ -22,8 +27,13 @@ public class UnitTests
     [TestMethod]
     public void TestVaz()
     {
+        Stopwatch sw = Stopwatch.StartNew();
         var responce = client.Detect(File.ReadAllBytes(vaz));
-        Trace.WriteLine(@$"{nameof(TestVaz)}: {responce}");
+        sw.Stop();
+        Trace.WriteLine(@$"
+{nameof(TestVaz)}: {responce}
+Duration: {sw.ElapsedMilliseconds} msec
+");
         if (responce.Probability < 0.9 || responce.ClassName != "VAZ")
             throw new Exception("Ошибка предсказания!");
     }
@@ -31,8 +41,13 @@ public class UnitTests
     [TestMethod]
     public void TestUaz()
     {
+        Stopwatch sw = Stopwatch.StartNew();
         var responce = client.Detect(File.ReadAllBytes(uaz));
-        Trace.WriteLine(@$"{nameof(TestUaz)}: {responce}");
+        sw.Stop();
+        Trace.WriteLine(@$"
+{nameof(TestUaz)}: {responce}
+Duration: {sw.ElapsedMilliseconds} msec
+");
         if (responce.Probability < 0.9 || responce.ClassName != "UAZ")
             throw new Exception("Ошибка предсказания!");
     }
@@ -40,8 +55,13 @@ public class UnitTests
     [TestMethod]
     public void TestVesta()
     {
+        Stopwatch sw = Stopwatch.StartNew();
         var responce = client.Detect(File.ReadAllBytes(vesta));
-        Trace.WriteLine(@$"{nameof(TestVesta)}: {responce}");
+        sw.Stop();
+        Trace.WriteLine(@$"
+{nameof(TestVesta)}: {responce}
+Duration: {sw.ElapsedMilliseconds} msec
+");
         if (responce.Probability < 0.9 || responce.ClassName != "VESTA")
             throw new Exception("Ошибка предсказания!");
     }
