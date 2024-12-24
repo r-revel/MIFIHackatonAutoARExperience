@@ -24,7 +24,7 @@ public class UnitTests
     {
         var responce = client.Detect(File.ReadAllBytes(vaz));
         Trace.WriteLine(@$"{nameof(TestVaz)}: {responce}");
-        if (responce.Probability < 0.9)
+        if (responce.Probability < 0.9 || responce.ClassName != "VAZ")
             throw new Exception("Ошибка предсказания!");
     }
 
@@ -33,7 +33,7 @@ public class UnitTests
     {
         var responce = client.Detect(File.ReadAllBytes(uaz));
         Trace.WriteLine(@$"{nameof(TestUaz)}: {responce}");
-        if (responce.Probability < 0.9)
+        if (responce.Probability < 0.9 || responce.ClassName != "UAZ")
             throw new Exception("Ошибка предсказания!");
     }
 
@@ -42,8 +42,7 @@ public class UnitTests
     {
         var responce = client.Detect(File.ReadAllBytes(vesta));
         Trace.WriteLine(@$"{nameof(TestVesta)}: {responce}");
-        if (responce.Probability < 0.9)
+        if (responce.Probability < 0.9 || responce.ClassName != "VESTA")
             throw new Exception("Ошибка предсказания!");
-
     }
 }

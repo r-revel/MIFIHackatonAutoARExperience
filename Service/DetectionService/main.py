@@ -35,10 +35,9 @@ async def detect(request: DetectRequest)-> DetectResponce:
     max_class = None
     for box in result.boxes:
         conf = box.conf[0]
-        cls = int(box.cls[0])
         if conf > max_conf:
             max_conf = conf
-            max_class = cls
+            max_class = int(box.cls[0])
     class_name = model.names[max_class]
     probability = max_conf.item()
     result = result.names
