@@ -6,6 +6,8 @@ import numpy as np
 import cv2
 from base64 import b64decode
 import threading
+import torch
+
 
 app = FastAPI()
 model = YOLO("yolov8_Cars.pt")
@@ -18,6 +20,7 @@ async def root():
 <h2>Detection service ready!</h2>
 <a href="/docs" target="_blank">Swagger UI</a><br><br>
 Model is running on: {next(model.model.parameters()).device}<br><br>
+Cuda is available: {torch.cuda.is_available() }
 """)
 
 class DetectResponce(BaseModel):
