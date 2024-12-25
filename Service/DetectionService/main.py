@@ -11,6 +11,8 @@ import torch
 
 app = FastAPI()
 model = YOLO("yolov8_Cars.pt")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model.to(device)
 syncObj = threading.Lock()
 
 # service url http://127.0.0.1:8000/
