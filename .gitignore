@@ -17,3 +17,5 @@
 /AutoARExperience/TestProject/bin/Debug/net8.0
 /AutoARExperience/TestProject/obj
 __pycache__
+/AutoARExperience/FAClient/bin
+/AutoARExperience/TestProject/bin/Release/net8.0/CoverletSourceRootsMapping_TestProject
