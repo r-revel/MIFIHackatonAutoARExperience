@@ -1,6 +1,7 @@
-﻿namespace FAClient.Dto;
-
-public class DetectRequest
+﻿namespace FAClient.Dto
 {
-    public string Data { get; set; } = "";
+    public class DetectRequest
+    {
+        public string Data { get; set; } = "";
+    }
 }

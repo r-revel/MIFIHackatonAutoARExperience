@@ -1,9 +1,13 @@
-﻿namespace FAClient;
+﻿using FAClient.Dto;
+using System;
 
-internal class FAClientV1 : BaseClient, IFAClient
+namespace FAClient
 {
-    public FAClientV1(string baseUrl) : base(baseUrl) { }
+    internal class FAClientV1 : BaseClient, IFAClient
+    {
+        public FAClientV1(string baseUrl) : base(baseUrl) { }
 
-    public DetectResponce Detect(byte[] data) =>
-        Post<DetectResponce>("detect", new DetectRequest() { Data = Convert.ToBase64String(data), });
+        public DetectResponce Detect(byte[] data) =>
+            Post<DetectResponce>("detect", new DetectRequest() { Data = Convert.ToBase64String(data), });
+    }
 }

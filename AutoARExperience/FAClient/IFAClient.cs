@@ -1,8 +1,11 @@
-﻿namespace FAClient;
+﻿using FAClient.Dto;
 
-public interface IFAClient
+namespace FAClient
 {
-    public string BaseUrl { get; }
+    public interface IFAClient
+    {
+        public string BaseUrl { get; }
 
-    DetectResponce Detect(byte[] data);
+        DetectResponce Detect(byte[] data);
+    }
 }

@@ -1,10 +1,14 @@
-﻿namespace FAClient.Dto;
+﻿
+using System.Text.Json;
 
-public class DetectResponce
+namespace FAClient.Dto
 {
-    public float Probability { get; set; } = 0;
+    public class DetectResponce
+    {
+        public float Probability { get; set; } = 0;
 
-    public string ClassName { get; set; } = "";
+        public string ClassName { get; set; } = "";
 
-    public override string ToString() => JsonConvert.SerializeObject(this);
+        public override string ToString() => JsonSerializer.Serialize(this);
+    }
 }

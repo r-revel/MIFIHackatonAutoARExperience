@@ -1,9 +1,10 @@
-﻿namespace FAClient;
-
-public static class FA
+﻿namespace FAClient
 {
-    public static IFAClient GetClient(string baseUrl)
+    public static class FA
     {
-        return new FAClientV1(baseUrl);
+        public static IFAClient GetClient(string baseUrl)
+        {
+            return new FAClientV1(baseUrl);
+        }
     }
 }

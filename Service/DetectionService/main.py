@@ -7,6 +7,7 @@ import cv2
 from base64 import b64decode
 import threading
 import torch
+import uvicorn
 
 # Инициализация FastAPI сревиса 
 app = FastAPI()
@@ -94,3 +95,6 @@ async def detect(request: DetectRequest)-> DetectResponce:
     probability = max_conf.item()
     # формируем ответ который будет отправлен на клиент
     return DetectResponce(Probability=probability, ClassName=class_name)
+
+if __name__ == '__main__':
+    uvicorn.run(app, host="0.0.0.0", port=8000)
