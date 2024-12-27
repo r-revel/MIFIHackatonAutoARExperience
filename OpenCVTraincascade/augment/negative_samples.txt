@@ -1,0 +1,12 @@
+/Volumes/Untitled/project/MIFI/MIFIHackatonAutoARExperience/OpenCVTraincascade/augment/augmented_negative/negative_rot0.jpg
+/Volumes/Untitled/project/MIFI/MIFIHackatonAutoARExperience/OpenCVTraincascade/augment/augmented_negative/negative_rot90.jpg
+/Volumes/Untitled/project/MIFI/MIFIHackatonAutoARExperience/OpenCVTraincascade/augment/augmented_negative/negative_rot180.jpg
+/Volumes/Untitled/project/MIFI/MIFIHackatonAutoARExperience/OpenCVTraincascade/augment/augmented_negative/negative_rot270.jpg
+/Volumes/Untitled/project/MIFI/MIFIHackatonAutoARExperience/OpenCVTraincascade/augment/augmented_negative/negative_flip_h.jpg
+/Volumes/Untitled/project/MIFI/MIFIHackatonAutoARExperience/OpenCVTraincascade/augment/augmented_negative/negative_flip_v.jpg
+/Volumes/Untitled/project/MIFI/MIFIHackatonAutoARExperience/OpenCVTraincascade/augment/augmented_negative/negative_scale0.5.jpg
+/Volumes/Untitled/project/MIFI/MIFIHackatonAutoARExperience/OpenCVTraincascade/augment/augmented_negative/negative_scale1.5.jpg
+/Volumes/Untitled/project/MIFI/MIFIHackatonAutoARExperience/OpenCVTraincascade/augment/augmented_negative/negative_brightness0.5_contrast0.5.jpg
+/Volumes/Untitled/project/MIFI/MIFIHackatonAutoARExperience/OpenCVTraincascade/augment/augmented_negative/negative_brightness0.5_contrast1.5.jpg
+/Volumes/Untitled/project/MIFI/MIFIHackatonAutoARExperience/OpenCVTraincascade/augment/augmented_negative/negative_brightness1.5_contrast0.5.jpg
+/Volumes/Untitled/project/MIFI/MIFIHackatonAutoARExperience/OpenCVTraincascade/augment/augmented_negative/negative_brightness1.5_contrast1.5.jpg

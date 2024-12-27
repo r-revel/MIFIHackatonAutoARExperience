@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  opencv:
+    image: thiagofalcao/opencv3
+    container_name: opencv_container
+    volumes:
+      - .:/workspace  # Подключает текущую папку к контейнеру в /workspace
+    stdin_open: true  # Оставляет стандартный ввод открытым
+    tty: true         # Выделяет псевдотерминал
+    command: /bin/bash  # Запускает bash при старте контейнера

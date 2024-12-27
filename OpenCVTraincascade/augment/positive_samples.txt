@@ -1,0 +1,1 @@
+./augmented_positive/positive_brightness0.5_contrast0.5.jpg 4 524 40 162 164 20 33 165 171 21 802 164 163 517 791 167 180
