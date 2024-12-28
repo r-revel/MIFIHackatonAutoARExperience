@@ -21,7 +21,7 @@ namespace OpenCvSharp.Demo
 
 		private Nullable<WebCamDevice> webCamDevice = null;
 		public WebCamTexture webCamTexture = null;
-		private Texture2D renderedTexture = null;
+		public Texture2D renderedTexture = null;
 
 		/// <summary>
 		/// A kind of workaround for macOS issue: MacBook doesn't state it's webcam as frontal

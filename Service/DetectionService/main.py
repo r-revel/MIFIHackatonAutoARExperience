@@ -9,12 +9,12 @@ import threading
 import torch
 import uvicorn
 
-# Инициализация FastAPI сревиса 
+# Инициализация FastAPI сревиса
 app = FastAPI()
 # Инициализация модели нейронной сети.
-# Так как мы рассматриваем упрощенный сервис, 
+# Так как мы рассматриваем упрощенный сервис,
 # у нас будет только одна нейросетевая модель одновременно обрабатывающая запросы.
-# Инициализация модели происходит при старте приложения, 
+# Инициализация модели происходит при старте приложения,
 # для того чтобы не производить это при каждом запросе.
 # Что позволит уменьшить время выполнения запроса
 model = YOLO("yolov8_Cars.pt")
@@ -45,16 +45,16 @@ class DetectResponce(BaseModel):
     '''
     Класс содержащий ответ вебметода detect
     '''
-    
+
     #: Тип данных: float
-    #: Вероятность принадлежности изображения к детектируемому классу 
+    #: Вероятность принадлежности изображения к детектируемому классу
     Probability: float
 
     #: Тип данных: str
     #: Название класса к которому может принадлежать детектируемое изображение
     ClassName: str
 
-    
+
 class DetectRequest(BaseModel):
     '''
     Класс содержащий параметры вебметода detect
@@ -64,8 +64,9 @@ class DetectRequest(BaseModel):
     #: строка в кодировке BASE64 содержащая бинарные данные изображения
     Data: str
 
-@app.post("/detect/", response_model=DetectResponce) 
-async def detect(request: DetectRequest)-> DetectResponce:
+
+@app.post("/detect/", response_model=DetectResponce)
+async def detect(request: DetectRequest) -> DetectResponce:
     '''
     Определяем endpoint detect доступный по адресу http://127.0.0.1:8000/detect/
     Использует веб-метод POST
@@ -74,12 +75,12 @@ async def detect(request: DetectRequest)-> DetectResponce:
     '''
 
     # преобразуем строку в бинарный вид и загружаем в обьект изображения
-    img_bytes  = b64decode(request.Data, altchars=None, validate=False)
+    img_bytes = b64decode(request.Data, altchars=None, validate=False)
     img_array = np.frombuffer(img_bytes, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
     # блокируем доступ к модели из других котоков
     with syncObj:
-    # производим оценку изображения и затем освобождаем доступ
+        # производим оценку изображения и затем освобождаем доступ
         result = model(img)[0]
     # в цикле по результату оценки, находим класс обьекта с максимальным соотвествием
     max_conf = 0
@@ -91,10 +92,18 @@ async def detect(request: DetectRequest)-> DetectResponce:
             max_class = int(box.cls[0])
     # получаем название класса
     class_name = model.names[max_class]
-    # из тензора получаем скалярное значение метрики соотвествия 
+    # из тензора получаем скалярное значение метрики соотвествия
     probability = max_conf.item()
     # формируем ответ который будет отправлен на клиент
     return DetectResponce(Probability=probability, ClassName=class_name)
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1", port=8000)
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1", port=8000)
 
 if __name__ == '__main__':
     uvicorn.run(app, host="0.0.0.0", port=8000)
